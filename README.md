@@ -17,8 +17,8 @@ Getting Started
 
 ```sh
 # clone it
-git clone git@github.com:developit/express-es6-rest-api.git
-cd express-es6-rest-api
+git clone git@github.com:gballa/express_api_boilerplate.git
+cd express_api_boilerplate
 
 # Make it your own
 rm -rf .git && git init && npm init
@@ -35,7 +35,7 @@ PORT=8080 npm start
 Docker Support
 ------
 ```sh
-cd express-es6-rest-api
+cd express_api_boilerplate
 
 # Build your docker
 docker build -t es6/api-service .

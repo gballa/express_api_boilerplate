@@ -1,5 +1,5 @@
 {
-  "name": "express-es6-rest-api",
+  "name": "express_api_boilerplate",
   "version": "0.0.1",
   "description": "Starter project for an ES6 RESTful Express API",
   "main": "dist",

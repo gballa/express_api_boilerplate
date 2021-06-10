@@ -29,7 +29,7 @@ app.use(cors({
 }));
 
 app.use(bodyParser.json({
-    limit : config.bodyLimit
+    limit : BODY_LIMIT || config.bodyLimit
 }));
 
 // connect to db
