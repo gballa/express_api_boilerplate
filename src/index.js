@@ -1,3 +1,3 @@
+/* eslint-disable no-unused-vars */
 // require('dotenv').config()
-
-export const server = require('./server.js')
+import server from './server'

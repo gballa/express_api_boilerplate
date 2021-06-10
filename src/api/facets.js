@@ -1,6 +1,7 @@
 import resource from 'resource-router-middleware';
 import facets from '../models/facets';
 
+// eslint-disable-next-line no-unused-vars
 export default ({ config, db }) => resource({
 
 	/** Property name to store preloaded entity on `request`. */
@@ -16,6 +17,7 @@ export default ({ config, db }) => resource({
 	},
 
 	/** GET / - List all entities */
+	// eslint-disable-next-line no-unused-vars
 	index({ params }, res) {
 		res.json(facets);
 	},
