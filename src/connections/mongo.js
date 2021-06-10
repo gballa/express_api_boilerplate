@@ -1,5 +1,5 @@
 import {MongoClient} from 'mongodb'
-import {MONGO_DB, MONGO_URI} from '../config/env'
+import {MONGO_URI} from '../config/env'
 
 var db
 

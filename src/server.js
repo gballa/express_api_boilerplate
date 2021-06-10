@@ -9,14 +9,7 @@ import middleware from './middleware'
 import api from './api'
 import config from './config.json'
 
-import { NODE_ENV,
-    NODE_APP_URI,
-    PORT,
-    MONGO_URI,
-    MONGO_DB,
-    CORS_REGX,
-    BODY_LIMIT
-} from './config/env'
+import { PORT, BODY_LIMIT } from './config/env'
 import {connect} from "./connections/mongo";
 
 
