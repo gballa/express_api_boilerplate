@@ -5,7 +5,7 @@ const { combine, timestamp, printf} = format
 const myFormat = printf( ({ level, message, timestamp , ...metadata}) => {
     let msg = `[${timestamp}] ${level}: ${message}`
     if(metadata && !!Object.entries(metadata).length) {
-        msg += JSON.stringify(metadata)
+        msg += " : " + JSON.stringify(metadata)
     }
     return msg
 });

@@ -2,7 +2,7 @@ import resource from 'resource-router-middleware';
 import facets from '../models/facets';
 
 // eslint-disable-next-line no-unused-vars
-export default ({ config, db }) => resource({
+export default () => resource({
 
 	/** Property name to store preloaded entity on `request`. */
 	id : 'facet',
@@ -18,12 +18,13 @@ export default ({ config, db }) => resource({
 
 	/** GET / - List all entities */
 	// eslint-disable-next-line no-unused-vars
-	index({ params }, res) {
-		res.json(facets);
+	index({ params, db, log }, res) {
+		// throw new Error('gabim')
+		res.json({test: 2})
 	},
 
 	/** POST / - Create a new entity */
-	create({ body }, res) {
+	create({ body, db, log }, res) {
 		body.id = facets.length.toString(36);
 		facets.push(body);
 		res.json(body);
@@ -35,7 +36,7 @@ export default ({ config, db }) => resource({
 	},
 
 	/** PUT /:id - Update a given entity */
-	update({ facet, body }, res) {
+	update({ facet, body, db, logger }, res) {
 		for (let key in body) {
 			if (key!=='id') {
 				facet[key] = body[key];
@@ -45,7 +46,7 @@ export default ({ config, db }) => resource({
 	},
 
 	/** DELETE /:id - Delete a given entity */
-	delete({ facet }, res) {
+	delete({ facet, db, logger }, res) {
 		facets.splice(facets.indexOf(facet), 1);
 		res.sendStatus(204);
 	}

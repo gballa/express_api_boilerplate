@@ -6,6 +6,8 @@ import helmet from 'helmet'
 import logger from './lib/logger'
 import bodyParser from 'body-parser'
 import middleware from './middleware'
+import {errorHandlerMiddleware} from './middleware/errorHandler'
+import {responseHandlerMiddleware} from './middleware/responseHandler'
 import api from './api'
 import config from './config.json'
 
@@ -41,13 +43,25 @@ const init = async () => {
     })
 
     // internal middleware
-    app.use(middleware({ config, db }));
+    app.use(middleware({ config, db }))
+    app.use(responseHandlerMiddleware)
+
 
     // api router
-    app.use('/api', api({ config, db }));
+    app.use('/api', api({ config, db }))
+
+    app.use(function(req, res, next) {
+        if (!req.route) {
+            res.status(404)
+            return next(new Error('Not Found'));
+        }
+        next();
+    });
+
+    app.use(errorHandlerMiddleware)
 
     app.server.listen(PORT, () => {
-        console.log(`🚀 Server ready at http://localhost:${app.server.address().port}`);
+        console.log(`🚀 Server ready at http://localhost:${app.server.address().port}`)
     });
 }
 
